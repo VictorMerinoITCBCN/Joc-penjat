@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="style/style.css">
+    <title>Joc penjat</title>
+</head>
+<body>
+    <header>
+        <input type="password" id="input-secret-word">
+        <button id="btn-toggle-secret-word-type"><span class="material-symbols-outlined">visibility</span></button>
+        <button id="btn-start-game">Començar partida</button>
+    </header>
+    <main class="screen">
+        <h1 id="found-letters"><b>$:~</b> Escriu una paraula</h1>
+        <div class="player-info">
+            <h2>Jugador 1</h2>
+            <div>
+                <p>Punts partides actuals: <b id="score">0</b></p>
+                <p>Total partides: <b id="games">0</b></p>
+                <p>Partides guanyades: <b id="wins">0</b></p>
+                <p>Partida amb més punts: <b id="best-score"></b></p>
+            </div>
+        </div>
+        <img src="" alt="" id="img-progress">
+        <div class="screen-leds">
+            <span style="--color: #333">-</span>
+            <span style="--color: var(--main-color-01)">-</span>
+        </div>
+    </main>
+    <section id="keyboard">
+
+    </section>
+</body>
+<script src="scripts/Logic.js"></script>
+<script src="scripts/Stats.js"></script>
+<script src="scripts/Game.js"></script>
+<script src="scripts/Keyboard.js"></script>
+</html>
