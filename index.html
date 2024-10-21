@@ -14,8 +14,8 @@
         <button id="btn-start-game">Començar partida</button>
     </header>
     <main class="screen">
-        <h1 id="found-letters"><b>$:~</b> Escriu una paraula</h1>
-        <div class="player-info">
+        <h1 id="found-letters">Escriu una paraula</h1>
+        <div class="player-info window">
             <h2>Jugador 1</h2>
             <div>
                 <p>Punts partides actuals: <b id="score">0</b></p>
@@ -24,11 +24,13 @@
                 <p>Partida amb més punts: <b id="best-score"></b></p>
             </div>
         </div>
-        <img src="" alt="" id="img-progress">
+        <p id="progress" class="window"></p>
         <div class="screen-leds">
             <span style="--color: #333">-</span>
-            <span style="--color: var(--main-color-01)">-</span>
+            <span style="--color: #f00">-</span>
         </div>
+        <img src="https://i.pinimg.com/originals/5a/d2/92/5ad292c36976a19a798b67d942da4f2b.gif" alt="" id="broken-screen">
+        <img src="img/explosion.gif" alt="" id="explosion">
     </main>
     <section id="keyboard">
 

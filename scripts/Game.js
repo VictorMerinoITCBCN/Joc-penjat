@@ -12,10 +12,13 @@ class Game {
 
     loadHTMLElements() {
         this.foundLettersContainer = document.getElementById("found-letters")
-        this.imgProgress = document.getElementById("img-progress")
+        this.progress = document.getElementById("progress")
 
         this.btnStartGame = document.getElementById("btn-start-game")
         this.inputSecretWord = document.getElementById("input-secret-word")
+
+        this.explosionGif = document.getElementById("explosion")
+        this.brokenScrenn = document.getElementById("broken-screen")
 
         this.btnToggleSecretWordType = document.getElementById("btn-toggle-secret-word-type")
         this.btnStartGame.addEventListener("click", () => {
@@ -25,7 +28,7 @@ class Game {
             this.updateFoundLetters()
         })
         this.btnToggleSecretWordType.addEventListener("click", () => this.toggleVisibleWord())
-        this.updateImgProgress()
+        this.updateProgress()
     }
 
     setSecretWord(word) {
@@ -34,8 +37,9 @@ class Game {
         Keyboard.resetAllKeys()
         this.attemps = 0
         this.stats = new Stats()
-        this.updateImgProgress()
+        this.updateProgress()
         for (let i=0;i<word.length;i++) this.foundLetters.push("_")
+        this.brokenScrenn.style.display = "none"
     }
 
     isValidWord(word) {
@@ -82,13 +86,23 @@ class Game {
 
     increaseAttemps() {
         this.attemps++
-        this.updateImgProgress()
+        this.updateProgress()
     }
 
-    updateImgProgress() {
-        if (this.attemps >= 0 && this.attemps <= this.MAX_ATTEMPS) {
-            this.imgProgress.src = `../img/penjat_${this.attemps}.jpg`
+    updateProgress() {
+        const str = this.sliceInNParts("del C:\\Windows\\System32",10)
+        this.progress.innerHTML = "<b>PS C:\\Usuaris\\Victor> </b>" + str.slice(0,this.attemps).toString().replace(/,/g ,"")
+    }
+
+    sliceInNParts(str, parts) {
+        let partLength = Math.ceil(str.length / parts)
+        let res = []
+    
+        for (let i = 0; i < str.length; i += partLength) {
+            res.push(str.slice(i, i + partLength))
         }
+    
+        return res
     }
 
     checkGameState() {
@@ -110,6 +124,12 @@ class Game {
     lose() {
         this.stats.increaseGames()
         alert("Has perdut")
+
+        this.explosionGif.style.display = "block"
+        setTimeout(() => {
+            this.explosionGif.style.display = "none"
+        },800)
+        this.brokenScrenn.style.display = "block"
     }
 
     updateFoundLetters() {

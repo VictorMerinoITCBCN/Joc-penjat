@@ -1,6 +1,11 @@
 :root {
-    --main-color-01 : #53dc63;
-    --main-color-02 : #1caf28;
+    --main-color-01 : #ccc;
+    --main-color-02 : #666;
+}
+
+@font-face {
+    font-family: "Windows 98";
+    src: url("../fonts/Windows\ Regular.ttf");
 }
 
 * {
@@ -10,7 +15,7 @@
 
 body {
     background: #222;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: "Windows 98", monospace;
 }
 
 header {
@@ -36,8 +41,8 @@ button {
     background: var(--main-color-01);
     color: #000;
     border: none;
-    box-shadow: 0 5px var(--main-color-02);
-    border-radius: .4em;
+    box-shadow: 0 7px var(--main-color-02);
+    border-radius: .2em;
     font-weight: 600;
     height: 40px;
 
@@ -61,50 +66,82 @@ button {
     margin: 10px;
     position: relative;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    aspect-ratio: 2/1;
-    border: 15px solid #ccc;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 35px max-content;
+    height: 350px;
+    gap: 10px;
+    border: 10px solid #888;
     border-radius: .4em;
-    background: #000; 
+    background: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/13fa948f-46f8-4625-8d23-e072c440f4de/dft2utm-ebccfed1-db77-430f-bc30-29889f0015d0.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzEzZmE5NDhmLTQ2ZjgtNDYyNS04ZDIzLWUwNzJjNDQwZjRkZVwvZGZ0MnV0bS1lYmNjZmVkMS1kYjc3LTQzMGYtYmMzMC0yOTg4OWYwMDE1ZDAucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.64Si_Ogm7WH61ESLGcxU4-DEXA9roejtPe3iIu3xwEQ"); 
+    background-size: cover;
 
     h1 {
         grid-column: span 2;
         text-align: center;
-        color: #fff;
+        color: #000;
         font-size: 25px;
-    
-        b {
-            color: var(--main-color-01);
-        }
     }
+}
+
+#explosion {
+    display: none;
+    position: absolute;
+    width: 100%;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#broken-screen {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: grayscale();
+}
+
+.window {
+    border: 1px solid #ccc;
+    border-top: 10px solid #ccc;
 }
 
 .player-info {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    color: #fff;
+    color: #000;
+    background: #999;
+    padding: 2px;
     h2 {
-        color: var(--main-color-01);
-        font-size: 1.2em;
+        color: #f00;
+        font-size: 1em;
         border-bottom: 2px solid #fff;
         padding-bottom: 3px;
     }
     p {
+        font-size: .8em;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
         b {
             width: 100%;
-            color: var(--main-color-01);
+            color: #000;
         }
     }
 }
 
-#img-progress {
-    filter: invert();
-    width: 100%;
+#progress {
+    color: #fb1;
+    width: calc(100% - 30px);
+    padding: 5px;
+    background: #00a;
+
+    b {
+        color: #fff;
+        font-weight: normal;
+    }
 }
 
 .screen-leds {
@@ -123,11 +160,11 @@ button {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px 5px;
+    gap: 15px 5px;
     padding: 10px;
     margin: 10px;
-    background: #ccc;
-    box-shadow: 0 12px #888;
+    background: #888;
+    box-shadow: 0 12px #444;
     border-radius: .5em;
 
     align-content: center;
@@ -139,6 +176,7 @@ button {
         height: max-content;
         aspect-ratio: 1;
         font-size: 20px;
+        font-family: "Windows 98", monospace;
     }
 }
 
@@ -152,5 +190,11 @@ button {
 
     header {
         grid-column: span 2;
+    }
+
+    .screen {
+        grid-template-rows: 35px 60%;
+        height: max-content;
+        aspect-ratio: 4/3;
     }
 }
